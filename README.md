@@ -1,5 +1,4 @@
 # interview
-All the possible interview question
 
 ---------------------------------------------------------------------------
 
@@ -132,4 +131,207 @@ Here is a **comprehensive list of machine round interview questions** that cover
 
 ---
 
-Would you like a **PDF list**, code templates in a specific language (like PHP or JavaScript), or practice tests based on these?
+# Interview Answers
+---
+
+### ✅ Example Machine Round Question:
+
+**Problem:**
+Write a program that takes an array of integers and returns a new array such that each element at index `i` of the new array is the product of all the numbers in the original array except the one at `i`.
+
+> **Input:** `[1, 2, 3, 4, 5]`
+> **Output:** `[120, 60, 40, 30, 24]`
+
+---
+
+Here's the **PHP solution** for the **Webkul machine round pattern questions** you referenced. This code handles **pattern printing** as described in the examples.
+
+---
+
+## 🧩 **Pattern 1: Dynamic Pattern Printing (Odd Input)**
+
+```php
+<?php
+$n = (int)readline("Enter an odd number >= 3: ");
+if ($n < 3 || $n % 2 == 0) {
+    exit("Invalid input. Please enter an odd number >= 3.\n");
+}
+
+// Top inverted pyramid using '@'
+for ($i = 0; $i < $n; $i += 2) {
+    echo str_repeat(" ", $i);
+    echo str_repeat("@", $n - $i);
+    echo "\n";
+}
+
+// Lower rectangle of '*'
+for ($i = 0; $i < $n; $i++) {
+    if ($i == 0) {
+        echo str_repeat("*", $n) . "\n";
+    } else {
+        echo "*" . str_repeat(" ", $n - 2) . "*\n";
+    }
+}
+```
+
+---
+
+## 🧩 **Pattern 2: Diamond‑like Star Pattern with Centered @‑Block**
+
+```php
+<?php
+$n = (int)readline("Enter an odd number >= 3: ");
+if ($n < 3 || $n % 2 == 0) {
+    exit("Invalid input. Only odd numbers >= 3 are allowed.\n");
+}
+
+// Top triangle of '*'
+for ($i = 1; $i <= $n; $i++) {
+    echo str_repeat("*", $i) . str_repeat(" ", 2 * ($n - $i));
+    echo str_repeat("*", $i) . "\n";
+}
+
+// Centered '@' block
+for ($i = 0; $i < $n; $i++) {
+    echo str_repeat(" ", $n) . str_repeat("@", $n) . "\n";
+}
+
+// Lower inverted triangle
+for ($i = $n; $i >= 1; $i--) {
+    echo str_repeat(" ", $n) . str_repeat("*", $i) . "\n";
+}
+```
+
+---
+
+## 🧩 **Pattern 3: Combined Triangle & Center Block Pattern**
+
+```php
+<?php
+$n = (int)readline("Enter an odd number >= 3: ");
+if ($n < 3 || $n % 2 == 0) {
+    exit("Invalid input. Only odd numbers >= 3 are allowed.\n");
+}
+
+// Top triangle with '@'
+for ($i = 1; $i <= $n; $i++) {
+    echo str_repeat(" ", $n - $i);
+    echo str_repeat("@", 2 * $i - 1);
+    echo "\n";
+}
+
+// Bottom part: mirrored star triangles
+for ($i = 1; $i <= $n; $i++) {
+    echo str_repeat("*", $i);
+    echo str_repeat(" ", 2 * ($n - $i));
+    echo str_repeat("*", $i) . "\n";
+}
+```
+
+---
+
+## 🧩 **Pattern 4: Even‑Input “Simple” Asterisk Pattern**
+
+```php
+<?php
+$n = (int)readline("Enter an even number >= 2: ");
+if ($n < 2 || $n % 2 != 0) {
+    exit("Invalid input. Only even numbers >= 2 are allowed.\n");
+}
+
+for ($i = 0; $i < $n; $i++) {
+    for ($j = 0; $j < $n; $j++) {
+        echo "*";
+    }
+    echo "\n";
+}
+```
+
+---
+
+## ✅ Key PHP Functions Used:
+
+* `str_repeat()` – for printing characters/spaces.
+* `readline()` – to take terminal input.
+* `exit()` – to reject invalid input early.
+
+---
+
+
+### 💡 Thinking Process:
+
+1. You cannot use division (interviewer may ask this).
+2. Use prefix and suffix products.
+3. Time complexity should ideally be **O(n)**.
+
+---
+
+### ✅ Code in PHP (You can adapt this to other languages if needed)
+
+```php
+function productArray($nums) {
+    $n = count($nums);
+    $left = array_fill(0, $n, 1);
+    $right = array_fill(0, $n, 1);
+    $result = array_fill(0, $n, 1);
+
+    // Fill left products
+    for ($i = 1; $i < $n; $i++) {
+        $left[$i] = $nums[$i - 1] * $left[$i - 1];
+    }
+
+    // Fill right products
+    for ($i = $n - 2; $i >= 0; $i--) {
+        $right[$i] = $nums[$i + 1] * $right[$i + 1];
+    }
+
+    // Multiply left and right
+    for ($i = 0; $i < $n; $i++) {
+        $result[$i] = $left[$i] * $right[$i];
+    }
+
+    return $result;
+}
+
+// Example usage:
+print_r(productArray([1, 2, 3, 4, 5]));
+```
+
+---
+
+### 🧠 Tips to Crack the Machine Round:
+
+1. **Read the problem carefully.**
+
+   * Clarify edge cases: empty array, single element, zeros.
+
+2. **Choose a familiar language.**
+
+   * Don't pick a fancy one unless you're confident.
+
+3. **Optimize before you code.**
+
+   * Think: Brute force vs efficient method.
+
+4. **Write clean code.**
+
+   * Use good variable names.
+   * Add basic comments.
+
+5. **Test your code.**
+
+   * Always test edge cases like `[0, 2, 3]`, `[1]`, or negative numbers.
+
+---
+
+### 👀 Other Common Topics in Machine Rounds:
+
+* String manipulations (anagrams, palindrome, reverse words).
+* Arrays (missing number, duplicates, max subarray).
+* Sorting and searching.
+* Hash maps, sets.
+* Recursion (factorial, Fibonacci, backtracking basics).
+
+---
+
+
