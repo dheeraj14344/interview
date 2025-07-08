@@ -307,7 +307,7 @@
     ```
     ---
 
-11. Inverted Left Triangle
+11. Inverted Right Triangle
     
     ```
     *****
