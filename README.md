@@ -9,6 +9,39 @@ Here is a **comprehensive list of machine round interview questions** that cover
 ## ✅ 1. **Array & String Questions**
 
 * Find the **duplicate** number in an array.
+    ### 🌟 **Sample Output (for input `5`):**
+    
+    ```
+    Array
+    (
+        [0] => 2
+        [1] => 3
+        [2] => 1
+    )
+    ```
+    ### ✅ **PHP Code:**
+    
+    ```
+    function findDuplicate($array)
+    {
+        $seen = [];
+        $duplicates = [];
+    
+        foreach ($array as $value) {
+            if (isset($seen[$value])) {
+                $duplicates[$value] = true;
+            }else {
+                $seen[$value] = true;
+            }
+        }
+        return array_keys($duplicates);
+    
+    }
+    
+    print_r(findDuplicate([1, 2, 3, 4, 2, 5, 3, 6, 1]));
+
+    ```
+    ---
 * Find the **missing number** from 1 to N.
 * Rotate an array to the right/left by K steps.
 * Merge two sorted arrays without using built-in functions.
